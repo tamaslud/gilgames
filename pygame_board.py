@@ -1,6 +1,13 @@
 '''
 Board Game
 coded by Tamas Ludanyi
+
+R-G-B-R-G-B... clockwise sequence
+Each row and column must have 1 red, 1 green, 1 blue,
+and two neutral (unfilled, or light brown placeholder)
+circles.
+Click on circles to change colors, the initial ones cannot 
+be modified (marked vith small circles) 
 '''
 
 
@@ -15,7 +22,12 @@ def main():
     spiral_seq = [0,1,2,3,4,9,8,7,6,11,16,17,18,13,14,19,24,23,22,21,20,15,10,5, 0]
 
     #board_init = (0,0,0,2,3,  3,2,0,1,0,  2,3,0,0,1,  0,1,2,3,0,  1,0,3,0,2)
+    
+    #hard one
     board_init = (0,0,0,0,3,  0,0,0,1,0,  0,0,0,0,0,  0,3,0,0,0,  1,0,0,0,0)
+    
+    # easy one
+    board_init = (1,0,3,0,0,  0,3,0,2,0,  0,0,0,0,0,  0,0,0,0,0,  2,0,1,0,3)
 
     surface_sz = 600   # Desired physical surface size, in pixels.
     OFFSET = 100
@@ -143,8 +155,9 @@ def main():
         
         seq = []
         for i, s in enumerate(spiral_seq):
-            if i < len(spiral_seq) and board[s] in (1,2,3):
+            if i < len(spiral_seq)-1 and board[s] in (1,2,3):
                 seq.append(board[s])
+        
         
         valid_sequence = [1,2,3,1,2,3,1,2,3,1,2,3,1,2,3]
         
